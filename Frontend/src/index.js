@@ -4,13 +4,11 @@ import './index.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import SmartRouter from './Router.js';
+import SmartRouter from './router.js';
 import reducer from './reducer'
 
 let initialState = {
-    products: [],
-    categories: categories,
-    cart: []
+    locations: []
 }
 
 const state = createStore(
