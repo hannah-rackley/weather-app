@@ -9,7 +9,6 @@ import reducer from './reducer'
 import { saveState, loadState} from './localStorage'
 
 const persistedState = loadState();
-console.log(persistedState);
 
 const state = createStore(
     reducer, persistedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

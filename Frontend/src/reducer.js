@@ -22,8 +22,17 @@ const addLocation = (oldState, action) => {
     
 }
 
+const removeLocation = (oldState, action) => {
+    let filteredLocations = oldState.locations.filter(location => location.specific !== action.specific)
+    return ({
+    ...oldState, 
+    locations: filteredLocations
+    });
+}
+
 const reducerRouter = {
-    'ADD_LOCATION': addLocation
+    'ADD_LOCATION': addLocation,
+    'REMOVE_LOCATION': removeLocation
 }
 
 const reducer = (oldState, action) => {
