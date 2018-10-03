@@ -1,7 +1,6 @@
 import React from 'react';
 
 const TodayTemplate = (props) => {
-    console.log(props.location.location)
     let prefix = props.location.location.query.results.channel;
     let atmosphere = prefix.atmosphere;
     let conditions = prefix.item.condition.text;
@@ -13,9 +12,10 @@ const TodayTemplate = (props) => {
     let sunset = prefix.astronomy.sunset;
     return (
         <div>
-            <h1>{date}</h1>
+            <h1>{props.location.specific}</h1>
+            <h2>{date}</h2>
             <p>Weather conditions are: {conditions}</p>
-            <p>Current Temperature for the day:{currentTemp}</p>
+            <p>Current Temperature for the day: {currentTemp}</p>
             <p>{high}, {low}, {sunrise}, {sunset}</p>
         </div>
     )
