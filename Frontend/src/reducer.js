@@ -1,4 +1,29 @@
+const addLocation = (oldState, action) => {
+    if (oldState === undefined) {
+        return ({
+            ...oldState, 
+            locations: [{ location: action.location, specific: action.specific, link: action.link }]
+        })
+    } else {
+        let savedLocations = oldState.locations.map(location => location.specific)
+        if (savedLocations.includes(action.specific)) {
+            let filteredLocations = oldState.locations.filter(location => location.specific !== action.specific)
+            return ({
+            ...oldState, 
+            locations: [{ location: action.location, specific: action.specific, link: action.link }].concat(filteredLocations)
+            })
+        } else {
+            return {
+                ...oldState, 
+                locations: [{ location: action.location, specific: action.specific, link: action.link }].concat(oldState.locations)
+            }
+        }
+    }
+    
+}
+
 const reducerRouter = {
+    'ADD_LOCATION': addLocation
 }
 
 const reducer = (oldState, action) => {

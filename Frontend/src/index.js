@@ -6,14 +6,20 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import SmartRouter from './router.js';
 import reducer from './reducer'
+import { saveState, loadState} from './localStorage'
 
-let initialState = {
-    locations: []
-}
+const persistedState = loadState();
+console.log(persistedState);
 
 const state = createStore(
-    reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    reducer, persistedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
+
+state.subscribe(() => {
+    saveState({
+        locations: state.getState().locations
+    });
+});
 
 const App =
   <Provider store={state}>
