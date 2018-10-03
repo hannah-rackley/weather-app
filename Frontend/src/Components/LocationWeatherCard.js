@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import TodayTemplate from './TodayTemplate';
 
 const LocationWeatherCard = (props) => {
     let specificLocation = props.location.specific;
     return (
         <div className='location-weather-card'>
-            <p>{props.location.specific}</p>
+            <TodayTemplate location={props.location} />
             <button onClick={() => props.dispatch({ type: "REMOVE_LOCATION", specific: specificLocation })} className="btn btn-danger">X</button>
         </div>
     )
