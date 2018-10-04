@@ -30,9 +30,17 @@ const removeLocation = (oldState, action) => {
     });
 }
 
+const updateCurrentLocation = (oldState, action) => {
+    return ({
+        ...oldState, 
+        currentLocation: [{ location: action.location, specific: action.specific, link: action.link }]
+    });
+}
+
 const reducerRouter = {
     'ADD_LOCATION': addLocation,
-    'REMOVE_LOCATION': removeLocation
+    'REMOVE_LOCATION': removeLocation,
+    'UPDATE_CURRENT_LOCATION': updateCurrentLocation
 }
 
 const reducer = (oldState, action) => {

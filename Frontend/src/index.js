@@ -16,7 +16,8 @@ const state = createStore(
 
 state.subscribe(() => {
     saveState({
-        locations: state.getState().locations
+        locations: state.getState().locations,
+        currentLocation: state.getState().currentLocation
     });
 });
 
