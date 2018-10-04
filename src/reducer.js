@@ -1,21 +1,21 @@
 const addLocation = (oldState, action) => {
     if (oldState === undefined) {
-        return ({
+        return {
             ...oldState, 
-            locations: [{ location: action.location, specific: action.specific, link: action.link }]
-        })
+            locations: [{ specific: action.specific, link: action.link }]
+        };
     } else {
         let savedLocations = oldState.locations.map(location => location.specific)
         if (savedLocations.includes(action.specific)) {
             let filteredLocations = oldState.locations.filter(location => location.specific !== action.specific)
-            return ({
+            return {
             ...oldState, 
-            locations: [{ location: action.location, specific: action.specific, link: action.link }].concat(filteredLocations)
-            })
+            locations: [{ specific: action.specific, link: action.link }].concat(filteredLocations)
+            };
         } else {
             return {
                 ...oldState, 
-                locations: [{ location: action.location, specific: action.specific, link: action.link }].concat(oldState.locations)
+                locations: [{ specific: action.specific, link: action.link }].concat(oldState.locations)
             }
         }
     }
@@ -24,17 +24,24 @@ const addLocation = (oldState, action) => {
 
 const removeLocation = (oldState, action) => {
     let filteredLocations = oldState.locations.filter(location => location.specific !== action.specific)
-    return ({
+    return {
     ...oldState, 
     locations: filteredLocations
-    });
+    };
 }
 
 const updateCurrentLocation = (oldState, action) => {
-    return ({
-        ...oldState, 
-        currentLocation: [{ location: action.location, specific: action.specific, link: action.link }]
-    });
+    if (action.location !== null) {
+        return {
+            ...oldState, 
+            currentLocation: [{ location: action.location, specific: action.specific, link: action.link }]
+        };
+    } else {
+        return {
+            ...oldState, 
+            currentLocation: null
+        };
+    }
 }
 
 const reducerRouter = {

@@ -15,7 +15,6 @@ class LocationWeatherCard extends React.Component {
         let specificLocation = this.props.location[0].specific;
         return (
             <div className='location-weather-card'>
-                <button onClick={() => {this.props.dispatch({ type: "REMOVE_LOCATION", specific: specificLocation })}}>X</button>
                 <button onClick={() => {this.setState({currentPage: "future"})}}>Future</button>
                 <button onClick={() => {this.setState({currentPage: "today"})}}>Current</button>
                 {this.state.currentPage !== "future" ? <TodayTemplate location={this.props.location} specific={specificLocation}/> : <ThreeDayTemplate location={this.props.location} specific={specificLocation}/>}
