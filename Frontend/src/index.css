@@ -7,6 +7,8 @@ html, body {
 .location-weather-card {
   background-color: lightcyan;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   margin: 1em 10em;
   padding: 1em;

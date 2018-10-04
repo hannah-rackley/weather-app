@@ -8,7 +8,7 @@ class Homepage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentLocation: {}
+            currentLocation: undefined
         }
         this.onLocationSelected = this.onLocationSelected.bind(this);
     }
@@ -23,7 +23,6 @@ class Homepage extends React.Component {
     }
 
     onLocationSelected(event) {
-        console.log(event.target.value);
         let requestURL = encodeURI(`https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${event.target.value}")&format=json&env=store://datatables.org/alltableswithkeys`);
         fetch(requestURL)
             .then(response => {
@@ -44,7 +43,7 @@ class Homepage extends React.Component {
             <div>
                 <h1>Weather App</h1>
                 <SmartLocationSearchForm />
-                <select type="select" onChange={this.onLocationSelected} label="Select Location">
+                <select type="select" onChange={this.onLocationSelected} label="Select Location" multiple>
                     {this.createSelectList()}
                 </select>
                 {this.state.currentLocation !== undefined ? <SmartLocationWeatherCard key={this.state.currentLocation.link} location={this.state.currentLocation}/> : null}

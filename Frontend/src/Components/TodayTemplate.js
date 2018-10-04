@@ -3,7 +3,6 @@ import React from 'react';
 const TodayTemplate = (props) => {
     let location = props.location[0];
     if (location !== undefined) {
-        console.log(location);
         let prefix = location.location.query.results.channel;
         let atmosphere = prefix.atmosphere;
         let conditions = prefix.item.condition.text;
