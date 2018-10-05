@@ -1,28 +1,19 @@
 import React from 'react';
 
-const ThreeDayTemplate = (props) => {
+const ThreeDayColumn = (props) => {
     let forecastPrefix = props.location.location.query.results.channel.item.forecast[props.i];
-    let date = forecastPrefix.date;
     let day = forecastPrefix.day;
     let high = forecastPrefix.high;
     let condition = forecastPrefix.text;
     let low = forecastPrefix.low;
-    if (props.i === 0) {
         return (
-            <div>
-                <h1>{props.location.specific}</h1>
+            <div className='three-day-column'>
                 <h2>{day}</h2>
-                <p>{high}, {low}, {condition}</p>
+                <p>Predicted Conditions: {condition}</p>
+                <p>High: {high}&#8457; </p> 
+                <p>Low: {low}&#8457; </p>
             </div> 
         )
-    } else {
-        return (
-            <div>
-                <h2>{day}</h2>
-                <p>{high}, {low}, {condition}</p>
-            </div>
-        )
-    }
 }
 
-export default ThreeDayTemplate;
+export default ThreeDayColumn;

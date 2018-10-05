@@ -9,8 +9,11 @@ const ThreeDayTemplate = (props) => {
             forecasts.push(<ThreeDayColumn location={location} i={i} key={i}/>)
         }
         return (
-            <div>
-                {forecasts}
+            <div className='three-day-template'>
+                <h1>{location.specific}</h1>
+                <div className='three-day-template-forecasts'>
+                    {forecasts}
+                </div>
             </div>
         )
     } else {

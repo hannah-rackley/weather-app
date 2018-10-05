@@ -13,12 +13,16 @@ const TodayTemplate = (props) => {
         let sunrise = prefix.astronomy.sunrise;
         let sunset = prefix.astronomy.sunset;
         return (
-            <div>
+            <div className='today-template'>
                 <h1>{location.specific}</h1>
-                <h2>{date}</h2>
-                <p>Weather conditions are: {conditions}</p>
-                <p>Current Temperature for the day: {currentTemp}</p>
-                <p>{high}, {low}, {sunrise}, {sunset}</p>
+                <h1>{currentTemp}&#8457;</h1>
+                <p>Current conditions: {conditions}</p>
+                <p>Humidity: {atmosphere.humidity}%</p>
+                <p>High: {high}&#8457;</p>
+                <p>Low: {low}&#8457; </p>
+                <p>Sunrise: {sunrise}</p>
+                <p>Sunset: {sunset}</p> 
+                <p>{date}</p>
             </div>)
     } else {
         return null;

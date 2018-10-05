@@ -21,10 +21,7 @@ class LocationSearchForm extends React.Component {
     handleNewInput = (event) => this.setState({ newInput: event.target.value });
 
     render() {
-        return (
-            <div>
-                <LocationSearchBar searchLocations={this.searchLocations} handleNewInput={this.handleNewInput} newInput={this.state.newInput}/>
-            </div>)
+        return <LocationSearchBar searchLocations={this.searchLocations} handleNewInput={this.handleNewInput} newInput={this.state.newInput} />
   }
 }
 
