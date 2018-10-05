@@ -6,9 +6,11 @@ const fetchWeather = (query, props) => {
         })
         .then(response => JSON.parse(response))
         .then(weather => {
-            let specificLocation = `${weather.query.results.channel.location.city}, ${weather.query.results.channel.location.region}, ${weather.query.results.channel.location.country}`
-            props.dispatch({type: 'ADD_LOCATION', specific: specificLocation, link: weather.query.results.channel.link});
-            props.dispatch({type: 'UPDATE_CURRENT_LOCATION', location: weather, specific: specificLocation, link: weather.query.results.channel.link});
+            if (weather.query.results !== null ) {
+                let specificLocation = `${weather.query.results.channel.location.city}, ${weather.query.results.channel.location.region}, ${weather.query.results.channel.location.country}`
+                props.dispatch({type: 'ADD_LOCATION', specific: specificLocation, link: weather.query.results.channel.link});
+                props.dispatch({type: 'UPDATE_CURRENT_LOCATION', location: weather, specific: specificLocation, link: weather.query.results.channel.link});
+            }
         })
     }
 export default fetchWeather;
