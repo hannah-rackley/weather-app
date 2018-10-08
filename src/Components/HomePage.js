@@ -64,7 +64,7 @@ class Homepage extends React.Component {
                         {this.createSelectList()}
                     </div>
                 </div>
-                {this.props.currentLocation !== null ? <SmartLocationWeatherCard key={this.props.currentLocation.link} location={this.props.currentLocation}/> : null}
+                {this.props.currentLocation !== undefined && this.props.currentLocation !== null ? <SmartLocationWeatherCard key={this.props.currentLocation.link} location={this.props.currentLocation}/> : null}
             </div>
         )
     }
